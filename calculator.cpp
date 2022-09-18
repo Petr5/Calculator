@@ -31,15 +31,18 @@ int Calculator::PermitOperation(){
 }
 
 int Calculator::Plus(){
-    if (this->nmb + this->cur_res < this->cur_res || this->nmb + this->cur_res < this->nmb){
-//         QMessageBox::warning(this, "Error", "calculator doesn't support number greater than 2147483647");
-        return 2;
+    bool sign = this->nmb > 0 || this->cur_res > 0;
+    if (sign){
+        if (this->nmb > 0 && this->cur_res > 0 && this->nmb + this->cur_res < 0){
+            return 2;
+        }
+        if (this->nmb < 0 && this->cur_res < 0 && this->nmb + this->cur_res >= 0){
+            return 2;
+        }
     }
-    else{
-        this->cur_res = this->nmb + this->cur_res;
-        this->nmb = 0;
-        return 0;
-    }
+    this->cur_res = this->nmb + this->cur_res;
+    this->nmb = 0;
+    return 0;
 }
 int Calculator::Minus(){
     if (this->cur_res  < INT_MIN + this->nmb){
@@ -55,6 +58,11 @@ int Calculator::Minus(){
         return 0;
     }}
 int Calculator::Cdot(){
+    if (!this->nmb) {
+        this->cur_res = 0;
+        this->nmb = 0;
+        return 0;
+    }
     if (abs(this->cur_res) > (INT_MAX / abs(nmb))){ // TODO: This implementation not correct but fast
 //         QMessageBox::warning(this, "Error", "calculator doesn't support number greater than 2147483647");
         return 2;

@@ -51,6 +51,8 @@ private slots:
 //    void on_label_windowIconTextChanged(const QString &iconText);
     void initialize_calc();
 
+    void on_pushButton_zero_clicked();
+
 private:
     Ui::MainWindow *ui;
     Calculator* calculator = nullptr;

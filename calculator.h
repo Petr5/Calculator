@@ -14,7 +14,7 @@ private:
     char sign;
     bool is_first_calculation =true;
     int PermitOperation();
-
+    bool await_right_operand = false;
     int Plus();
     int Minus();
     int Cdot();
