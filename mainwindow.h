@@ -53,6 +53,8 @@ private slots:
 
     void on_pushButton_zero_clicked();
 
+    void on_pushButton_CE_clicked();
+
 private:
     Ui::MainWindow *ui;
     Calculator* calculator = nullptr;

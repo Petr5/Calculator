@@ -11,7 +11,7 @@ public:
 private:
     int nmb = 0;
     int cur_res = 0;
-    char sign;
+    char sign = ' ';
     bool is_first_calculation =true;
     int PermitOperation();
     bool await_right_operand = false;

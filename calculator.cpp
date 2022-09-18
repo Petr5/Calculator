@@ -13,8 +13,11 @@ Calculator::Calculator()
 
 int Calculator::PermitOperation(){
     int handle_error = 0;
-    cout << "Executing operation " << this->cur_res << " " << sign << " " << this->nmb << endl;
-    if (sign == '+'){
+
+    if (await_right_operand || sign == ' '){
+        return 3;
+    }
+    else if (sign == '+'){
 
         handle_error = Plus();
     }
@@ -27,6 +30,7 @@ int Calculator::PermitOperation(){
     else if (sign == '/'){
         handle_error = Divide();
     }
+    cout << "Executing operation " << this->cur_res << " " << sign << " " << this->nmb << endl;
     return handle_error;
 }
 
